@@ -41,6 +41,10 @@ lazy_static!{
     };
 }
 
+async fn ignore() -> Result<(),()> {
+    Ok(())
+}
+
 // "catagory" query enum
 #[derive(Deserialize)]
 enum CostCatagory {
@@ -136,7 +140,25 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     // Define our routes using Axum's router
     tracing::info!("Setting up routers");
     let app = Router::new()
+            .route("/", routing::any(ignore))
             .route("/get-items", routing::get(get_items_from_cost))
+            .layer(
+                tower_http::cors::CorsLayer::new()
+                    .allow_headers([
+                            "content-type".parse::<axum::http::HeaderName>().unwrap(),
+                    ])
+                    .expose_headers([
+                            "content-type".parse::<axum::http::HeaderName>().unwrap(),
+                    ])
+                    .allow_methods([
+                            axum::http::method::Method::GET,
+                            axum::http::method::Method::OPTIONS,
+                    ])
+                    .allow_origin(
+                           "*".parse::<axum::http::HeaderValue>().unwrap() 
+                        )
+            )
+            .fallback(ignore)
             .with_state(appstate);
 
     // Start the service
