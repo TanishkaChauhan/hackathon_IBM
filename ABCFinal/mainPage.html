@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tracker.io</title>
+</head>
+
+<body class="newBody">
+    <header class="navigationHeader">
+        <div>
+            <!-- Istantiates the navigation bar-->
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="signup.html">Sign up</a>
+
+            </nav>
+        </div>
+    </header>
+
+    <div class="card">
+        <h1>Your progress...</h1>
+        <div class="container">
+
+            <div class="">
+                <h3 id="intialInvestment">Intital investment: £???</h3>
+                <div class="whiteBackground">
+                    <h1 class="financialWaste" id="wastedMoney">£0.00</h1>
+                </div>
+                <h3>So far, this amount of money could buy...</h3>
+                <div class="pinkBackground">
+                    <div class="listItems" id="thingsYouCanBuy">
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const apiUrl = "https://j4uiijcmmh.execute-api.eu-north-1.amazonaws.com/get-items?catagory=Generic";
+            let cost = Number(window.localStorage.getItem("cost"));
+
+            try {
+                const response = await fetch(apiUrl + `&cost=${cost + 1000}`, {
+                    method: "GET",
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    const leftover = data.leftover;
+                    for (let i = 0; i < data.items.length; i++) {
+                        const itemData = data.items[i];
+                        const itemCount = itemData.count;
+                        const itemCost = itemData.cost;
+                        const itemName = itemData.label;
+                        const itemImageURL = itemData.image;
+
+                
+
+                        document.getElementById("thingsYouCanBuy").innerHTML +=
+                            `
+                            <div class=itemCard>
+                                <div class="image" >
+                                    <img src="${itemImageURL}" width=100% height=100%>
+                                    ${itemName}
+                                    ${itemCost}
+                                </div>
+
+
+                            </div>
+                            `
+
+                            
+                            ;
+
+
+
+                        console.log(itemName);
+                    }
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (err) {
+                alert("Encountered an error: " + err.message);
+            }
+
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
