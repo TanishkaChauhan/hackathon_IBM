@@ -100,10 +100,14 @@ async fn get_items_from_cost(mut cost_query: Query<CostQuery>) -> Result<Json<It
     // Convert our HashMap into a Vector
     let mut returned_items: Vec<ItemRecord> = Vec::new();
     for (index, count) in items_selected {
+        let mut image_url = items::S3URL.to_string();
+        image_url.push_str(ITEMS_LIST[index].2);
+
         returned_items.push(ItemRecord {
             count,
             cost: ITEMS_LIST[index].0,
             label: ITEMS_LIST[index].1,
+            image: image_url,
         });
     }
     Ok(Json(ItemCost{
@@ -158,7 +162,6 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
                            "*".parse::<axum::http::HeaderValue>().unwrap() 
                         )
             )
-            .fallback(ignore)
             .with_state(appstate);
 
     // Start the service
