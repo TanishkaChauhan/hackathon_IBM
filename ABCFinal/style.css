@@ -186,3 +186,51 @@
 .navbar a:hover::after{
     width: 100%;
 }
+
+.card{
+    width: 90%;
+    max-width: 470px;
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    color: #fff;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+}
+
+.card h1{
+    padding-bottom: 10px;
+}
+
+.card input, button {
+    width: 100%;
+    height: 40px;
+
+    padding-left: 10px;
+    margin-bottom: 20px;
+
+    background: #282B30;
+    font-family: Montserrat;
+    font-weight: 500;
+    color: #fff;
+    font-size: 12px;
+
+    border-bottom: 2px solid transparent;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+    border-image: -webkit-linear-gradient(25deg, #FFBE0B, #FB5607, #FF006E, #8338EC, #3A86FF) 1;
+}
+
+.card button:hover{
+    transition: 300ms;
+    background-color: #3A3E43;
+}
+
+.card button:active {
+    background-color: #1C1D20   ;
+}
+
+.card a{
+    color: white;
+    text-decoration: none;
+}
