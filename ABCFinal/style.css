@@ -1,3 +1,5 @@
+
+/* MAIN CSS*/
 body{
         margin: 0;
         font-family: 'Prompt', sans-serif;
@@ -18,7 +20,7 @@ section{
     }
 
 
-
+/* BACKGROUND CURVES BACK GROUND CURVES */
 .pink{
     background: #ff0066;
     overflow: hidden;
@@ -147,7 +149,7 @@ section{
   }
 
 
-/* sedhasdgasjfa */
+/* Navigation bar */
 .navigationHeader{
     top: 0; left: 0;
     width: 100%;
@@ -171,7 +173,7 @@ section{
 
 }
 
-/* Creates the style of what should appear when hovered over*/
+
 .navbar a::after{
     content: '';
     height: 3px;
@@ -183,13 +185,14 @@ section{
     transition: 0.5s;
 }
 
-/* Extends the previous style for everyone to see*/
+
 .navbar a:hover::after{
     width: 100%;
 }
 
+/* Card system (login / signup) */
 .card{
-    width: 90%;
+    width: 100%;
     max-width: 470px;
     background: #202731;
     color: #fff;
@@ -203,7 +206,7 @@ section{
     padding-bottom: 10px;
 }
 
-.card input, button, select{
+.card input, button{
     width: 100%;
     height: 40px;
 
@@ -211,22 +214,21 @@ section{
     margin-bottom: 20px;
 
     background: #282B30;
-    font-family: Montserrat;
+    font-family: 'Roboto mono', monospace;
     font-weight: 500;
     color: #fff;
     font-size: 12px;
 
     border: solid transparent;
-
-
     border-color: #FFBE0B;
+    align-items: center;
 
-    
 }
 
 .card button{
-    margin-left: 5px;
+    width: 104%
 }
+
 
 .card button:hover{
     transition: 300ms;
@@ -261,13 +263,10 @@ label{
     margin-top: 5px;
 }
 
-/* efsdf */
+/* MISCLEEANIOUS */
 
 .whiteBackground{
     margin-top: 10px;
-
-    
-
     position: relative;
     width: 75%;
     background: #eeeee6;
@@ -277,8 +276,6 @@ label{
     font-size: 30px;
     padding: 40px;
 
-
-    padding: 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -288,7 +285,6 @@ label{
 
 .pinkBackground{
     margin-top: 10px;
-
 
     position: relative;
     width: 75%;
@@ -307,11 +303,6 @@ label{
     color: black;
 }
 
-.listItems{
-    color: black;
-    font-size: 25px;
-}
-
 
 .content{
     text-align: center;
@@ -326,6 +317,15 @@ label{
 .specialButton{
     margin-top: 40px;
 }
+
+/* Item card */
+
+.listItems{
+    color: black;
+    font-size: 25px;
+    
+}
+
 
 .itemCard{
     background-color: #eeeee6;
@@ -342,14 +342,30 @@ label{
 }
 
 .productCard{
-    font-weight: bold;
-    font-family: 'Roboto mono', monospace;
+    padding: 20px;
+    
 }
 
 .productImage{
     border-radius: 5px;
+    border-image: auto;
+    margin-bottom: 50px;
+    filter: drop-shadow(0 50px 20px #0009)
 }
 
+.itemCard h2{
+    font-weight: 500;
+    font-size: large;
+    font-family: 'Roboto mono', monospace;
+}
+
+.price{
+    letter-spacing: 7px;
+    font-family: 'Roboto mono', monospace;
+    
+}
+
+/* Circular percentage */
 .circular-progress {
     position: relative;
     height: 250px;
