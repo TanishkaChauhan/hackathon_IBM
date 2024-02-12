@@ -9,17 +9,18 @@
 </head>
 
 <body class="newBody">
+
+    <!-- Navigation bar -->
     <header class="navigationHeader">
         <div>
-            <!-- Istantiates the navigation bar-->
             <nav class="navbar">
                 <a href="index.html">Home</a>
                 <a href="login.html">Login</a>
                 <a href="signup.html">Sign up</a>
-
             </nav>
         </div>
     </header>
+
 
     <div class="card">
         <h1>Your progress...</h1>
@@ -27,29 +28,64 @@
 
             <div class="">
                 <h3 id="intialInvestment">Intital investment: £???</h3>
+                <h3 id="intialInvestment">You've wasted the following amount...</h3>
                 <div class="whiteBackground">
                     <h1 class="financialWaste" id="wastedMoney">£0.00</h1>
                 </div>
+                
+                <h3 id="intialInvestment">You've been to this % of lectures...</h3>
+                <div class="whiteBackground">
+                    <div class="circular-progress">
+                        <div class="value-container">0%</div>
+                      </div>
+                </div> 
                 <h3>So far, this amount of money could buy...</h3>
                 <div class="pinkBackground">
                     <div class="listItems" id="thingsYouCanBuy">
-
-
                     </div>
                 </div>
-
             </div>
-
-
         </div>
     </div>
 
 
     </div>
-    </div>
+  
 
     <script>
+
+        /* Code that runs when document is loaded */
         document.addEventListener("DOMContentLoaded", async () => {
+
+            /* Progress bar code*/
+            let progressBar = document.querySelector(".circular-progress");
+            let valueContainer = document.querySelector(".value-container");
+            console.log(progressBar, valueContainer)
+
+            /* FOR BACKEND DEVELOPERS */
+
+            let progressValue = 0; /* Start value */
+            let progressEndValue = 15; /* End value */
+            let speed = 10; /* Speed at which progress bar moves */
+
+            /* IGNORE IF YOURE NIKOLETTE OR TANNI OR BEN */
+            let progress = setInterval( () => {
+                progressValue++;
+                console.log(progressValue);
+                valueContainer.textContent = `${progressValue}%`;
+
+                progressBar.style.background = `conic-gradient(
+                    #FFBE0B ${progressValue * 3.6}deg,
+                    #cadcff ${progressValue * 3.6}deg
+                )`
+                /*  Unneeded code */
+                if(progressValue == progressEndValue){
+                    clearInterval(progress);
+                }
+            }, speed)
+
+
+            /* Code related to API */
             const apiUrl = "https://j4uiijcmmh.execute-api.eu-north-1.amazonaws.com/get-items?catagory=Generic";
             let cost = Number(window.localStorage.getItem("cost"));
 
@@ -69,26 +105,23 @@
                         const itemName = itemData.label;
                         const itemImageURL = itemData.image;
 
-                
-
                         document.getElementById("thingsYouCanBuy").innerHTML +=
                             `
                             <div class=itemCard>
-                                <div class="image" >
-                                    <img src="${itemImageURL}" width=100% height=100%>
+                                <div class="productCard" >
+                                    <img class="productImage"src="${itemImageURL}" width=100% height=100%>
+                                    
                                     ${itemName}
-                                    ${itemCost}
+                                    <br>
+
+                                    $ ${itemCost}
                                 </div>
 
 
                             </div>
                             `
 
-                            
                             ;
-
-
-
                         console.log(itemName);
                     }
                 } else {
