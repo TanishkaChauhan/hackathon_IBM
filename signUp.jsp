@@ -276,9 +276,9 @@
     <div>
         <!-- Istantiates the navigation bar-->
         <nav class="navbar">
-            <a href="index.html">Home</a>
-            <a href="login.html">Login</a>
-            <a href="signup.html">Sign up</a>
+            <a href="homePage">Home</a>
+            <a href="loginPage">Login</a>
+            <a href="signUp">Sign up</a>
 
         </nav>
     </div>
