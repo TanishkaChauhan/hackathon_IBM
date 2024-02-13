@@ -274,10 +274,13 @@
 
         <div class="card-left">
             <c:forEach items="${user}" var="u">
-                <p id="intialInvestment">Initial Investment (Tuition Fee): ${u.initialInvestment}</p>
+                <p id="intialInvestment">Initial Investment (Tuition Fee): 9250£</p>
+               <!-- <p id="intialInvestment">Initial Investment (Tuition Fee): ${u.initialInvestment}</p> -->
                 <div class="whiteBackground">
                     <p class="financialWaste" id="wastedMoney">money lost:</p>
-                    <p class="negative-money">-${u.moneyLost} </p>
+                    <p class="negative-money">-700 </p>
+
+                    <!--  <p class="negative-money">-${u.moneyLost} </p> -->
                 </div>
             </c:forEach>
             <p id="itemLabel">So far, this amount of money could buy...</p>
@@ -295,15 +298,20 @@
                     <div class="circular-progress-inner"></div>
                     <div class="value-container">
                         <c:forEach items="${lecture}" var="l">
-                        <p id="lecturePercentage">${l.lecturePercentage}%</p>
+                            <p id="lecturePercentage">97%</p>
+
+                   <!--   <p id="lecturePercentage">${l.lecturePercentage}%</p> -->
                         </c:forEach>
                     </div>
                 </div>
             </div>
 
             <c:forEach items="${lecture}" var="l">
-                <p id="missedCourse">Missed Lectures: ${l.missedCourse}</p>
-                <p id="totalCourse">Total Lectures: ${l.totalCourse}</p>
+                <p id="missedCourse">Missed Lectures: 14</p>
+                <p id="totalCourse">Total Lectures: 600</p>
+
+              <!--      <p id="missedCourse">Missed Lectures: ${l.missedCourse}</p>  -->
+              <!--      <p id="totalCourse">Total Lectures: ${l.totalCourse}</p>  -->
             </c:forEach>
         </div>
         <button onclick="updateAttendance()" id="attendanceBtn">Update Attendance</button>
